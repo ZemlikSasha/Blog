@@ -1,0 +1,8 @@
+.venv/
+.idea/
+
+venv/
+
+__pacache__/
+*.py[cod]
+*$py.class
