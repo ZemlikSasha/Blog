@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+    <!-- ##### Intro News Area Start ##### -->
+    <section class="intro-news-area section-padding-100-0 mb-70">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Intro News Tabs Area -->
+                <div class="col-12 col-lg-8">
+                    <div class="intro-news-tab">
+
+                        <!-- Intro News Filter -->
+                        <div class="intro-news-filter d-flex justify-content-between">
+                            <h6>All the news</h6>
+                        </div>
+
+                        <div class="tab-content" id="nav-tabContent">
+
+                            <div class="tab-pane fade show active" id="nav-1" role="tabpanel" aria-labelledby="nav1">
+                                <div class="row">
+                                    <!-- Single News Area -->
+                                    {% for post in posts_first %}
+                                        <div class="col-12 col-sm-6">
+                                            <div class="single-blog-post style-2 mb-5">
+                                                <!-- Blog Thumbnail -->
+                                                <div class="blog-thumbnail">
+                                                    <a href="{% url 'posts_detail' post.url %}"><img src="{{ post.image.url }}" alt=""></a>
+                                                </div>
+
+                                                <!-- Blog Content -->
+                                                <div class="blog-content">
+                                                    <span class="post-date">{{ post.date }}</span>
+                                                    <a href="#" class="post-title">{{ post.title }}</a>
+                                                    <a href="#" class="post-author">{{ post.author }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="nav-2" role="tabpanel" aria-labelledby="nav2">
+                                <div class="row">
+
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="nav-3" role="tabpanel" aria-labelledby="nav3">
+                                <div class="row">
+
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="nav-4" role="tabpanel" aria-labelledby="nav4">
+                                <div class="row">
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Widget -->
+                <div class="col-12 col-sm-9 col-md-6 col-lg-4">
+                    <div class="sidebar-area">
+
+                        <!-- Newsletter Widget -->
+                        <div class="single-widget-area newsletter-widget mb-30">
+                            <h4>Subscribe to our newsletter</h4>
+                            <form action="#" method="post">
+                                <input type="email" name="nl-email" id="nlemail" placeholder="Your E-mail">
+                                <button type="submit" class="btn newsbox-btn w-100">Subscribe</button>
+                            </form>
+                            <p class="mt-30">Nullam lacinia ex eleifend orci porttitor, suscipit interdum augue condimentum. Etiam pretium turpis eget nibh . volutpat lobortis.</p>
+                        </div>
+
+                        <!-- Add Widget -->
+                        <div class="single-widget-area add-widget mb-30">
+                            <a href="#">
+                                <img src="img/bg-img/add3.png" alt="">
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Intro News Area End ##### -->
+
+    <!-- ##### Video Area Start ##### -->
+    <section class="video-area bg-img bg-overlay bg-fixed" style="background-image: url({% static  "img/bg-img/10.jpg" %});">
+        <div class="container">
+            <div class="row">
+                <!-- Featured Video Area -->
+                <div class="col-12">
+                    <div class="featured-video-area d-flex align-items-center justify-content-center">
+                        <div class="video-content text-center">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+    <!-- ##### Video Area End ##### -->
+
+    <!-- ##### Top News Area Start ##### -->
+    <div class="top-news-area section-padding-100">
+        <div class="container">
+            <div class="row">
+
+                <!-- Single News Area -->
+                {% for post in posts_all %}
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="single-blog-post style-2 mb-5">
+                            <!-- Blog Thumbnail -->
+                            <div class="blog-thumbnail">
+                                <a href="{% url 'posts_detail' post.url %}"><img src="{{ post.image.url }}" alt=""></a>
+                            </div>
+
+                            <!-- Blog Content -->
+                            <div class="blog-content">
+                                <span class="post-date">{{ post.date }}</span>
+                                <a href="#" class="post-title">{{ post.title }}</a>
+                                <a href="#" class="post-author">{{ post.author }}</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- ##### Top News Area End ##### -->
+
+    <!-- ##### Add Area Start ##### -->
+    <div class="big-add-area mb-100">
+        <div class="container-fluid">
+            <a href="#"><img src="img/bg-img/add2.png" alt=""></a>
+        </div>
+    </div>
+    <!-- ##### Add Area End ##### -->
+{% endblock content %}
+
