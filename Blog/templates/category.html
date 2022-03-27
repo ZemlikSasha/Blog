@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load post_tag %}
+
+{% block content %}
+    <!-- ##### Catagory Featured Area Start ##### -->
+    <div class="catagory-featured-post bg-overlay clearfix" style="background-image: url({{ first_post.image.url }})">
+        <div class="container-fluid h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12 col-lg-9">
+                    <!-- Post Content -->
+                    <div class="post-content">
+                        <p class="tag"><span>{{ first_post.category }}</span></p>
+                        <a href="{% url 'posts_detail' first_post.url %}" class="post-title"><br>{{ first_post.title }}</a>
+                        <span class="post-date">{{ first_post.date }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Catagory Featured Area End ##### -->
+
+    <!-- ##### Intro News Area Start ##### -->
+    <section class="intro-news-area section-padding-100-0 mb-70">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Intro News Tabs Area -->
+                <div class="col-12 col-lg-8">
+                    <div class="intro-news-tab">
+
+                        <!-- Intro News Filter -->
+                        <div class="intro-news-filter d-flex justify-content-between">
+                            <h6>{{ posts_list.last.category }}</h6>
+                        </div>
+
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-1" role="tabpanel" aria-labelledby="nav1">
+                                <div class="row">
+                                    <!-- Single News Area -->
+                                    <div class="col-12">
+                                        <div class="single-blog-post style-2 mb-5">
+                                            <!-- Blog Thumbnail -->
+                                            <div class="blog-thumbnail">
+                                                <a href="{% url 'posts_detail' posts_list.first.url %}"><img src="{{ posts_list.first.image.url }}" alt=""></a>
+                                            </div>
+
+                                            <!-- Blog Content -->
+                                            <div class="blog-content">
+                                                <span class="post-date">{{ posts_list.first.date }}</span>
+                                                <a href="{% url 'posts_detail' posts_list.first.url %}" class="post-title">{{ posts_list.first.title }}</a>
+                                                <a href="#" class="post-author mb-30">{{ posts_list.first.author }}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Single News Area -->
+                                    {% for post in posts_list %}
+                                        <div class="col-12 col-sm-6">
+                                            <div class="single-blog-post style-2 mb-5">
+                                                <!-- Blog Thumbnail -->
+                                                <div class="blog-thumbnail">
+                                                    <a href="{% url 'posts_detail' post.url %}"><img src="{{ post.image.url}}" alt=""></a>
+                                                </div>
+
+                                                <!-- Blog Content -->
+                                                <div class="blog-content">
+                                                    <span class="post-date">{{ post.date }}/span>
+                                                    <a href="{% url 'posts_detail' post.url %}" class="post-title">{{ post.title }}</a>
+                                                    <a href="#" class="post-author">{{ post.author }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Widget -->
+                <div class="col-12 col-sm-9 col-md-6 col-lg-4">
+                    <div class="sidebar-area">
+
+                        <!-- Latest News Widget -->
+                        {% get_last_posts %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Intro News Area End ##### -->
+
+{% endblock content %}

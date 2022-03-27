@@ -32,66 +32,60 @@
                     <div class="contact-content mb-100">
 
                         <!-- Logo -->
-                        <a href="#" class="d-block mb-50"><img src="img/core-img/logo.png" alt=""></a>
+                        <a href="#" class="d-block mb-50"><img src="{% static "img/core-img/logo.png" %}" alt=""></a>
 
                         <!-- Single Contact Info -->
                         <div class="single-contact-info d-flex align-items-center">
                             <div class="icon mr-15">
-                                <img src="img/core-img/map-pin.png" alt="">
+                                <img src="{% static "img/core-img/map-pin.png" %}" alt="">
                             </div>
-                            <p>1481 Creekside Lane Avila Beach, CA 931</p>
+                            <p>Minsk,Belarus</p>
                         </div>
 
                         <!-- Single Contact Info -->
                         <div class="single-contact-info d-flex align-items-center">
                             <div class="icon mr-15">
-                                <img src="img/core-img/smartphone.png" alt="">
+                                <img src="{% static "img/core-img/smartphone.png" %}" alt="">
                             </div>
-                            <p>+53 345 7953 32453</p>
+                            <p>+375 44 753 24 59</p>
                         </div>
 
                         <!-- Single Contact Info -->
                         <div class="single-contact-info d-flex align-items-center">
                             <div class="icon mr-15">
-                                <img src="img/core-img/paper-plane.png" alt="">
+                                <img src="{% static "img/core-img/paper-plane.png" %}" alt="">
                             </div>
-                            <p>yourmail@gmail.com</p>
+                            <p>sasha.zemlyanskiy.00@mail.ru</p>
                         </div>
 
                         <!-- Contact Social Info -->
                         <div class="contact-social-info mt-50 mb-70">
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Dribbble"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Behance"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            <a href="https://www.facebook.com/people/%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80-%D0%97%D0%B5%D0%BC%D0%BB%D1%8F%D0%BD%D1%81%D0%BA%D0%B8%D0%B9/100010592200338/" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                            <a href="https://twitter.com/Zemlik6?t=p-iShZmhqH4RyuuTOFZZ0Q&s=09" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a>
+                            <a href="https://github.com/ZemlikSasha" data-toggle="tooltip" data-placement="top" title="Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
                         </div>
 
                         <!-- Contact Form Area -->
                         <div class="contact-form-area mb-70">
                             <h4 class="mb-50">Get In Touch</h4>
 
-                            <form action="#" method="post">
+                            <form action="{% url 'add_review_contact' %}" method="post">
+                                {% csrf_token %}
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="name" placeholder="Name">
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Name...">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <input type="email" class="form-control" id="email" placeholder="E-mail">
+                                            <input type="email" class="form-control" id="email" name="email" placeholder="Email...">
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="subject" placeholder="Subject">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-group">
-                                            <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                            <textarea name="text" class="form-control" id="message" cols="30" rows="10" placeholder="Message..."></textarea>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -110,23 +104,6 @@
                 </div>
 
                 <div class="col-12 col-sm-9 col-md-6 col-lg-4">
-
-                    <!-- Newsletter Widget -->
-                    <div class="single-widget-area newsletter-widget mb-30">
-                        <h4>Subscribe to our newsletter</h4>
-                        <form action="#" method="post">
-                            <input type="email" name="nl-email" id="nlemail" placeholder="Your E-mail">
-                            <button type="submit" class="btn newsbox-btn w-100">Subscribe</button>
-                        </form>
-                        <p class="mt-30">Nullam lacinia ex eleifend orci porttitor, suscipit interdum augue condimentum. Etiam pretium turpis eget nibh . volutpat lobortis.</p>
-                    </div>
-
-                    <!-- Add Widget -->
-                    <div class="single-widget-area add-widget mb-30">
-                        <a href="#">
-                            <img src="img/bg-img/add3.png" alt="">
-                        </a>
-                    </div>
 
                     <!-- Latest News Widget -->
                     {% get_last_posts %}
