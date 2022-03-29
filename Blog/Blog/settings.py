@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'post',
-    'ckeditor',
-    'ckeditor_uploader',
+    'ckeditor', #РЕДАКТОР
+    'ckeditor_uploader', #НЕОБХОДИМО ДЛЯ РЕДАКТОРА
 ]
 
 MIDDLEWARE = [
@@ -125,6 +125,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
+#ДЕРИКТОРИЯ ДЛЯ ФАЙЛОВ СТАТИКИ
 STATIC_URL = 'static/'
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [STATIC_DIR]
@@ -133,13 +134,16 @@ STATICFILES_DIRS = [STATIC_DIR]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
+#ДЕРИКТОРИЯ ДЛЯ ФАЙЛОВ ИЗ АДМИНКИ (МЕДИА)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+#ДЛЯ РАБОТЫ РЕДАКТОРА
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
+#НАСТРОЙКА РЕДАКТОРА
 CKEDITOR_CONFIGS = {
     'default': {
         'skin': 'moono',

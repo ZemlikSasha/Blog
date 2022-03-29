@@ -5,12 +5,12 @@ from .models import Reviews, ReviewContact
 class ReviewForm(forms.ModelForm):
 
     class Meta:
-        model = Reviews
-        fields = ('name', 'email', 'text')
+        model = Reviews #ПРИВЯЗКА ФОРМЫ К МОДЕЛИ(КОМЕНТЫ)
+        fields = ('name', 'email', 'text') #ПОЛЯ В ФОРМЕ
 
 
 class ReviewFormContact(forms.ModelForm):
 
     class Meta:
-        model = ReviewContact
+        model = ReviewContact #(ОТЗЫВ)
         fields = ('name', 'email', 'text')

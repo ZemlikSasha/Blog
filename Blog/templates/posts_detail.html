@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
-{% load post_tag %}
-{% load static %}
+{% load post_tag %} <!-- загрузка тегов-->
+{% load static %} <!-- загрузка статики-->
+{% block title %} {{ posts.title }} {% endblock title %} <!-- вывод текста в строке поисковой -->
 
 {% block content %}
     <!-- ##### Post Details Title Area Start ##### -->
@@ -87,11 +88,11 @@
                         <!-- Reply Form -->
                         <div class="contact-form-area">
                             <form action="{% url 'add_review' posts.id %}" method="post" id="formReview">
-                                {% csrf_token %}
+                                {% csrf_token %} <!-- токен защиты -->
                                 <div class="row">
-                                    <input type="hidden" name="parent" id="contactparent" value="">
+                                    <input type="hidden" name="parent" id="contactparent" value=""> <!-- засноситься значение родителя-->
                                     <div class="col-12 col-lg-6">
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Name*">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Name*">  <!-- поле ввода имени -->
                                     </div>
                                     <div class="col-12 col-lg-6">
                                         <input type="email" class="form-control" id="email" name="email" placeholder="Email*">
@@ -113,7 +114,7 @@
                     <div class="sidebar-area">
 
                         <!-- Latest News Widget -->
-                        {% get_last_posts %}
+                        {% get_last_posts %} <!-- импорт полсних новостей, втсавление отдельным файлом -->
 
                     </div>
                 </div>

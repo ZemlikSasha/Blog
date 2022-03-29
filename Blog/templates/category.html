@@ -1,6 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} <!-- импортирование в базу -->
 {% load static %}
 {% load post_tag %}
+{% block title %} Category {{ first_post.category }} {% endblock title %}
 
 {% block content %}
     <!-- ##### Catagory Featured Area Start ##### -->

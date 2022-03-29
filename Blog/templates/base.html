@@ -11,7 +11,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title -->
-    <title>Newsbox - Modern Magazine &amp; Newspaper HTML Template</title>
+    <title>{% block title %} Newsbox  {% endblock title %}</title>
 
     <!-- Favicon -->
     <link rel="icon" href="{% static "img/core-img/favicon.ico" %}">
@@ -48,7 +48,7 @@
                 <nav class="classy-navbar justify-content-between" id="newsboxNav">
 
                     <!-- Nav brand -->
-                    <a href="#" class="nav-brand"><img src="{% static "img/core-img/logo.png" %}" alt=""></a>
+                    <a href="{% url "home" %}" class="nav-brand"><img src="{% static "img/core-img/logo.png" %}" alt=""></a>
 
                     <!-- Navbar Toggler -->
                     <div class="classy-navbar-toggler">
@@ -67,7 +67,7 @@
                         <div class="classynav">
                             <ul>
                                 {% get_categories as categories %}
-                                {% if categories|length < 5 %}
+                                {% if categories|length < 5 %} <!-- прописание категорий -->
                                     {% for category in categories %}
                                         <li><a href="{% url 'category' category.name %}">{{ category.name }}</a></li>
                                     {% endfor %}
@@ -116,7 +116,7 @@
                         </ul>
                     </div>
                     <!-- Social Info -->
-                    <div class="footer-social-info">
+                    <div class="footer-social-info"> <!-- контакты -->
                         <a href="https://www.facebook.com/people/%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80-%D0%97%D0%B5%D0%BC%D0%BB%D1%8F%D0%BD%D1%81%D0%BA%D0%B8%D0%B9/100010592200338/" data-toggle="tooltip" target="_blank" data-placement="top" title="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                         <a href="https://twitter.com/Zemlik6?t=p-iShZmhqH4RyuuTOFZZ0Q&s=09" data-toggle="tooltip" data-placement="top" title="twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
                         <a href="#" data-toggle="tooltip" data-placement="top" title="linkedin" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
@@ -127,7 +127,7 @@
 
                     <!-- Copywrite Text -->
                     <p class="copywrite-text"><a href="#">
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved</a></p>
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved</a></p> <!-- js -->
                 </div>
             </div>
         </div>

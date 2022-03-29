@@ -7,12 +7,12 @@ from .forms import ReviewForm, ReviewFormContact
 from .models import Posts
 
 
-class PostList(View):
+class PostList(View): #класс представления главной страницы
 
     def get(self, request):
         posts_first = Posts.objects.all()[:4]
         posts_all = Posts.objects.all()
-        return render(request, 'index.html', {'posts_first': posts_first, 'posts_all': posts_all})
+        return render(request, 'index.html', {'posts_first': posts_first, 'posts_all': posts_all}) #передаю данные
 
 
 def contact(request):
@@ -26,11 +26,11 @@ class PostDetail(DetailView):
     template_name = 'posts_detail.html'
 
 
-class AddReview(View):
+class AddReview(View): #класс представления отзыва к посту
 
     def post(self, request, pk):
         form = ReviewForm(request.POST)
-        post = Posts.objects.get(id=pk)
+        post = Posts.objects.get(id=pk) #вывод айди
         if form.is_valid():
             form = form.save(commit=False)
             if request.POST.get('parent', None):
@@ -40,7 +40,7 @@ class AddReview(View):
         return redirect(post.get_absolute_url())
 
 
-class ReviewContact(View):
+class ReviewContact(View): #класс представления отзыва к контктам
 
     def post(self, request):
         form = ReviewFormContact(request.POST)
@@ -50,7 +50,7 @@ class ReviewContact(View):
         return redirect('/')
 
 
-class Category(View):
+class Category(View): #класс представления по отдельной категории
 
     def get(self, request, string):
         posts = Posts.objects.filter(category__name=string)

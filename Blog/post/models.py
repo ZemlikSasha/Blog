@@ -11,7 +11,7 @@ class Category(models.Model):
     description = models.TextField('Description')
     url = models.SlugField(max_length=100, unique=True)
 
-    def __str__(self):
+    def __str__(self): #вывод названий категорий(большие буквы)
         return self.name
 
     class Meta:
@@ -32,13 +32,13 @@ class Posts(models.Model):
     image = models.ImageField('Image', upload_to='posts/')
 
     def __str__(self):
-        return self.title
+        return self.title #вывод названия статьи
 
     def get_review(self):
-        return self.reviews_set.filter(parent__isnull=True)
+        return self.reviews_set.filter(parent__isnull=True) #отзывы с родителям
 
     def get_absolute_url(self):
-        return reverse('posts_detail', kwargs={'slug': self.url})
+        return reverse('posts_detail', kwargs={'slug': self.url}) #возращение адресс поста
 
     class Meta:
         verbose_name = 'Post'
@@ -51,13 +51,13 @@ class Reviews(models.Model):
     text = models.TextField('Text')
     post = models.ForeignKey(
         Posts, verbose_name='Review', on_delete=models.CASCADE
-    )
+    ) #привязка отзыва к посту
     parent = models.ForeignKey(
         'self', verbose_name='Parent', on_delete=models.SET_NULL, blank=True, null=True
-    )
+    ) #выбор родителя
 
     def __str__(self):
-        return f'{self.name} - {self.post}'
+        return f'{self.name} - {self.post}' #вывод имени и поста новостного
 
     class Meta:
         verbose_name = 'Review'
